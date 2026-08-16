@@ -1,0 +1,2 @@
+Read Me ou Leia-me 	
+ Este projeto é um Sistema de cadastro de Games este projeto é baseado na estrutura de código CRUD(Creat, Read, Update e Delet), com o objetivo de prover uma interface de controle, cadastro e visualização de Games

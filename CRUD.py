@@ -7,23 +7,36 @@
 #
 
 games = []
-
+ 
+ 
 def listarGames():
     print("==== LISTA DE GAMES ====")
     if games:
         for game in range(len(games)):
-            print(f"{game} - {games[game]}")
+            print(f"{game} - {games[game]['nome']} | "
+                  f"Gênero: {games[game]['genero']} | "
+                  f"Plataforma: {games[game]['plataforma']}")
     else:
         print("Nenhum game cadastrado.")
     input("Pressione ENTER para continuar...")
-
-
+ 
+ 
 def adicionarGame():
     print("==== ADICIONAR GAME ====")
     continuar = "s"
     while continuar == "s":
-        game = input("Digite o nome do game: ")
-        confirmar = input(f"Tem certeza que deseja adicionar '{game}'? (s/n): ")
+        nome = input("Digite o nome do game: ")
+        genero = input("Digite o gênero do game: ")
+        plataforma = input("Digite a plataforma do game: ")
+ 
+        # Dicionário representando um único game
+        game = {
+            "nome": nome,
+            "genero": genero,
+            "plataforma": plataforma
+        }
+ 
+        confirmar = input(f"Tem certeza que deseja adicionar '{nome}'? (s/n): ")
         if confirmar.lower() == "s":
             games.append(game)
             print("Game adicionado com sucesso!")
@@ -31,8 +44,8 @@ def adicionarGame():
             print("Game NÃO adicionado!")
         continuar = input("\nDeseja adicionar mais um game? (s/n): ")
     input("Pressione ENTER para continuar...")
-
-
+ 
+ 
 def buscarGame():
     print("==== BUSCAR GAME ====")
     if games:
@@ -40,20 +53,22 @@ def buscarGame():
         posicaoGame = 0
         itemBuscado = input("Digite o nome do game: ")
         for game in range(len(games)):
-            if itemBuscado == games[game]:
+            if itemBuscado == games[game]["nome"]:
                 gameEncontrado = True
                 posicaoGame = game
                 break
         if gameEncontrado:
             print("Game encontrado!")
-            print(f"{posicaoGame} - {games[posicaoGame]}")
+            print(f"{posicaoGame} - {games[posicaoGame]['nome']} | "
+                  f"Gênero: {games[posicaoGame]['genero']} | "
+                  f"Plataforma: {games[posicaoGame]['plataforma']}")
         else:
             print("Game não encontrado!")
     else:
         print("Nenhum game cadastrado.")
     input("Pressione ENTER para continuar...")
-
-
+ 
+ 
 def atualizarGame():
     print("==== ATUALIZAR GAME ====")
     if games:
@@ -61,17 +76,21 @@ def atualizarGame():
         posicaoGame = 0
         itemBuscado = input("Digite o nome do game: ")
         for game in range(len(games)):
-            if itemBuscado == games[game]:
+            if itemBuscado == games[game]["nome"]:
                 gameEncontrado = True
                 posicaoGame = game
                 break
         if gameEncontrado:
-            novoGame = input("Novo nome do game: ")
+            novoNome = input("Novo nome do game: ")
+            novoGenero = input("Novo gênero do game: ")
+            novaPlataforma = input("Nova plataforma do game: ")
             desejaAtualizar = input("\nDeseja fazer a atualização? (s/n): ")
             if desejaAtualizar.lower() == "s":
-                confirmar = input(f"\nTem certeza que deseja atualizar '{games[posicaoGame]}' para '{novoGame}'? (s/n):")
+                confirmar = input(f"\nTem certeza que deseja atualizar '{games[posicaoGame]['nome']}'? (s/n):")
                 if confirmar.lower() == "s":
-                    games[posicaoGame] = novoGame
+                    games[posicaoGame]["nome"] = novoNome
+                    games[posicaoGame]["genero"] = novoGenero
+                    games[posicaoGame]["plataforma"] = novaPlataforma
                     print("Game atualizado com sucesso!")
                 else:
                     print("Game NÃO atualizado!")
@@ -82,8 +101,8 @@ def atualizarGame():
     else:
         print("Nenhum game cadastrado.")
     input("Pressione ENTER para continuar...")
-
-
+ 
+ 
 def removerGame():
     print("==== REMOVER GAME ====")
     if games:
@@ -91,12 +110,12 @@ def removerGame():
         posicaoGame = 0
         itemBuscado = input("Digite o nome do game: ")
         for game in range(len(games)):
-            if itemBuscado == games[game]:
+            if itemBuscado == games[game]["nome"]:
                 gameEncontrado = True
                 posicaoGame = game
                 break
         if gameEncontrado:
-            confirmar = input(f"Deseja remover '{games[posicaoGame]}'? (s/n): ")
+            confirmar = input(f"Deseja remover '{games[posicaoGame]['nome']}'? (s/n): ")
             if confirmar.lower() == "s":
                 games.pop(posicaoGame)
                 print("Game removido com sucesso!")
@@ -107,8 +126,8 @@ def removerGame():
     else:
         print("Nenhum game cadastrado.")
     input("Pressione ENTER para continuar...")
-
-
+ 
+ 
 def menu():
     while True:
         print("=====================================")
@@ -123,7 +142,7 @@ def menu():
         print("==== 0 - Sair                    ====")
         print("====  Feito por: Wesley V. S. R  ====")
         print("=====================================")
-
+ 
         opcao = input("Escolha uma opção: ")
         match opcao:
             case "1":
@@ -142,3 +161,4 @@ def menu():
             case _:
                 print("Opção inválida!")
                 input("Pressione ENTER para continuar...")
+ 

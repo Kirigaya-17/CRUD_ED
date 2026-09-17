@@ -1,0 +1,69 @@
+Feito por: Isabela Santos, Maaby Mabilly, Matheus Soares, Tainá Tayla e Wesley Vitor
+Read Me ou Leia-me
+    Nome do projeto: GAMESONLINE
+ Este projeto é um Sistema de cadastro de Games este projeto é baseado na estrutura de código 
+ CRUD(Creat, Read, Update e Delet), com o objetivo de prover uma interface de controle, cadastro
+ e visualização de Games
+
+Cronograma de atualizações
+-------------------------------------------------------------------------------------------------------
+Cronograma do Projeto Inicial (Terminal)
+21/05/2026 -> Criação do menu iterativo, estrutura de repetição principal e inicialização da lista em memória games = [] versão 1.0
+23/05/2026 -> Implementação da função adicionarGame salvando nomes de jogos como strings diretamente na lista versão 1.1
+25/05/2026 -> Criação da funcionalidade listarGames, percorrendo e exibindo os índices numéricos da lista armazenada versão 1.2
+28/05/2026 -> Implementação da lógica de pesquisa em buscarGame checando correspondência exata de nomes na lista versão 1.3
+30/05/2026 -> Criação do método removerGame utilizando a exclusão pelo índice exato usando o método .pop() versão 1.4
+Aqui finalizamos acontrução de uma interface simples de CRUD
+-------------------------------------------------------------------------------------------------------
+Aqui Implementaremos Flask e um "Banco de Dados" usando o .JSON
+-------------------------------------------------------------------------------------------------------
+01/06/2026 -> Adição da funcionalidade atualizarGame, localizando o índice de um jogo e substituindo o valor antigo versão 1.5
+02/06/2026 -> Inclusão de etapas de confirmação (s/n) do usuário antes de concretizar adições, atualizações ou remoções versão 1.6
+04/06/2026 -> Otimização de segurança aplicando validação (if games:) em métodos para evitar quebra caso a lista esteja vazia versão 1.7
+05/06/2026 -> Ajustes finais de interface em texto, finalizando o protótipo funcional para ser executado no console versão 1.8
+05/06/2026 -> Lançamento da versão estável do CRUD para terminal e homologação do projeto inicial versão 1.9  Cronograma de Atualização (Web com Flask e JSON)
+02/09/2026 -> Transição da base do código para servidor local Web inicializando a aplicação através da biblioteca Flask versão 2.0
+03/09/2026 -> Implementação das funções de persistência carregar_games e salvar_games usando banco de dados games.json versão 2.1
+04/09/2026 -> Modificação da estrutura dos dados, convertendo o formato string simples para dicionários guardando nome, genero e plataforma versão 2.2
+05/09/2026 -> Criação da estrutura base de interface importando o base.html para padronizar cabeçalho, navegação e rodapé do site versão 2.3
+07/09/2026 -> Adaptação dos métodos de exibir e adicionar criando as rotas / e /adicionar para conversar com os templates visuais da página versão 2.4
+08/09/2026 -> Melhoria no sistema de busca na rota /buscar, implementando a verificação de palavras parciais sem distinção de letras maiúsculas versão 2.5
+09/09/2026 -> Criação da rota /atualizar utilizando métodos GET para carregar as informações velhas no template e POST para substitui-las versão 2.6
+09/09/2026 -> Transição do método de deletar transformando a rota /remover/<indice> para captar diretamente o ID enviado pela URL do navegador versão 2.7
+10/09/2026 -> Inclusão de mensagens do sistema usando o comando flash() provendo avisos visuais de erros ou sucessos diretamente na interface final versão 2.8  
+-------------------------------------------------------------------------------------------------------
+
+Evolução do projeto `CRUD.py` (terminal) para uma aplicação web, feita com
+Flask + persistência em JSON.
+
+## Estrutura do projeto
+
+```
+GAMESONLINE/
+├── app.py               -> aplicação Flask (rotas = funções do CRUD.py)
+├── games.json            -> "banco de dados" em JSON (gerado/lido automaticamente)
+├── templates/
+│   ├── base.html          -> layout base (navbar + rodapé)
+│   ├── index.html         -> listagem dos games (grid de cards)
+│   ├── adicionar.html     -> formulário de cadastro
+│   ├── atualizar.html     -> formulário de edição
+│   └── buscar.html        -> formulário e resultado da busca
+└── static/
+    └── style.css          -> tema visual (dark, estilo catálogo/streaming)
+```
+
+## Como rodar
+
+1. Tenha o Python 3 instalado.
+
+2.Prepare o ambiente
+
+3.Instale o Flask:
+   ```
+   ~/SeusProjeto$ pip install flask
+   ```
+4. Dentro da pasta do projeto, rode:
+   ```
+   ~/SeusProjeto$python app.py
+   ```
+5. Acesse no navegador: http://127.0.0.1:5000/

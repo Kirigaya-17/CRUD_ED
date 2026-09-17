@@ -1,0 +1,37 @@
+# =========================
+# Arquivos e Cache do Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# =========================
+# Ambientes Virtuais
+# =========================
+venv/
+env/
+ENV/
+.env
+.venv
+
+# =========================
+# Variáveis de Ambiente (Segurança)
+# =========================
+.env
+.flaskenv
+
+
+# =========================
+# Configurações de IDEs/Editores
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# Arquivos de Sistema Operacional
+# =========================
+.DS_Store
+Thumbs.db

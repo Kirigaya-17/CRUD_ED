@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block titulo %}Início - GAMESONLINE{% endblock %}
+
+{% block conteudo %}
+<h1 class="titulo-secao">🎮 Meus Games</h1>
+
+{% if games %}
+<div class="grid-cards">
+    {% for game in games %}
+    <div class="card-game">
+        <div class="card-capa">{{ game.nome[0]|upper }}</div>
+        <div class="card-info">
+            <h3>{{ game.nome }}</h3>
+            <p><strong>Gênero:</strong> {{ game.genero }}</p>
+            <p><strong>Plataforma:</strong> {{ game.plataforma }}</p>
+            <div class="card-acoes">
+                <a href="{{ url_for('atualizar_game', indice=loop.index0) }}" class="btn btn-editar">Editar</a>
+                <form action="{{ url_for('remover_game', indice=loop.index0) }}" method="POST" style="display:inline;"
+                      onsubmit="return confirm('Remover {{ game.nome }}?');">
+                    <button type="submit" class="btn btn-remover">Remover</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p class="vazio">Nenhum game cadastrado ainda. <a href="{{ url_for('adicionar_game') }}">Adicione o primeiro!</a></p>
+{% endif %}
+{% endblock %}

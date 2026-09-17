@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}Catálogo de Games{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">🎮 GAMES<span>ONLINE</span></div>
+        <nav>
+            <a href="{{ url_for('listar_games') }}">Início</a>
+            <a href="{{ url_for('adicionar_game') }}">Adicionar</a>
+            <a href="{{ url_for('buscar_game') }}">Buscar</a>
+        </nav>
+    </header>
+
+    <main class="conteudo">
+        {% with mensagens = get_flashed_messages(with_categories=true) %}
+            {% if mensagens %}
+                {% for categoria, mensagem in mensagens %}
+                    <div class="alerta alerta-{{ categoria }}">{{ mensagem }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block conteudo %}{% endblock %}
+    </main>
+
+    <footer class="rodape">
+        <p>Sistema de Games &mdash; Versão do Projeto: 2.0 (Web / Flask)</p>
+        <p>Feito por: Isabela Santos, Maaby Mabilly, Matheus Soares, Tainá Tayla e Wesley Vitor</p>
+    </footer>
+
+</body>
+</html>

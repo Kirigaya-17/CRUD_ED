@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block titulo %}Buscar Game{% endblock %}
+
+{% block conteudo %}
+<h1 class="titulo-secao">🔍 Buscar Game</h1>
+
+<form class="form-game" method="GET" action="{{ url_for('buscar_game') }}">
+    <label for="termo">Nome do game (não precisa ser exato)</label>
+    <input type="text" id="termo" name="termo" value="{{ termo or '' }}"
+           placeholder="Ex: zelda, god of, stardew..." autofocus>
+    <button type="submit">Buscar</button>
+</form>
+
+{% if termo %}
+    {% if resultados %}
+    <div class="grid-cards" style="margin-top:24px;">
+        {% for indice, game in resultados %}
+        <div class="card-game">
+            <div class="card-capa">{{ game.nome[0]|upper }}</div>
+            <div class="card-info">
+                <h3>{{ game.nome }}</h3>
+                <p><strong>Gênero:</strong> {{ game.genero }}</p>
+                <p><strong>Plataforma:</strong> {{ game.plataforma }}</p>
+                <div class="card-acoes">
+                    <a href="{{ url_for('atualizar_game', indice=indice) }}" class="btn btn-editar">Editar</a>
+                    <form action="{{ url_for('remover_game', indice=indice) }}" method="POST" style="display:inline;"
+                          onsubmit="return confirm('Remover {{ game.nome }}?');">
+                        <button type="submit" class="btn btn-remover">Remover</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="vazio" style="margin-top:16px;">Nenhum game encontrado com "{{ termo }}".</p>
+    {% endif %}
+{% endif %}
+{% endblock %}

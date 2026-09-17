@@ -1,2 +1,44 @@
-Read Me ou Leia-me 	
- Este projeto é um Sistema de cadastro de Games este projeto é baseado na estrutura de código CRUD(Creat, Read, Update e Delet), com o objetivo de prover uma interface de controle, cadastro e visualização de Games
+Feito por: Isabela Santos, Maaby Mabilly, Matheus Soares, Tainá Tayla e Wesley Vitor
+Read Me ou Leia-me
+    Nome do projeto: GAMESONLINE
+ Este projeto é um Sistema de cadastro de Games este projeto é baseado na estrutura de código 
+ CRUD(Creat, Read, Update e Delet), com o objetivo de prover uma interface de controle, cadastro
+ e visualização de Games
+
+Atualização V2.0
+Evolução do projeto `CRUD.py` (terminal) para uma aplicação web, feita com
+Flask + persistência em JSON.
+
+## Estrutura do projeto
+
+```
+GAMESONLINE/
+├── app.py               -> aplicação Flask (rotas = funções do CRUD.py)
+├── games.json            -> "banco de dados" em JSON (gerado/lido automaticamente)
+├── templates/
+│   ├── base.html          -> layout base (navbar + rodapé)
+│   ├── index.html         -> listagem dos games (grid de cards)
+│   ├── adicionar.html     -> formulário de cadastro
+│   ├── atualizar.html     -> formulário de edição
+│   └── buscar.html        -> formulário e resultado da busca
+└── static/
+    └── style.css          -> tema visual (dark, estilo catálogo/streaming)
+```
+
+## Como rodar
+
+1. Tenha o Python 3 instalado.
+
+2.Prepare o ambiente
+
+3.Instale o Flask:
+   ```
+   ~/SeusProjeto$ pip install flask
+   ```
+4. Dentro da pasta do projeto, rode:
+   ```
+   ~/SeusProjeto$python app.py
+   ```
+5. Acesse no navegador: http://127.0.0.1:5000/
+
+

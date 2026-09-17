@@ -1,0 +1,17 @@
+[
+    {
+        "nome": "The Legend of Zelda: Breath of the Wild",
+        "genero": "Aventura",
+        "plataforma": "Nintendo Switch"
+    },
+    {
+        "nome": "God of War Ragnarök",
+        "genero": "Ação",
+        "plataforma": "PlayStation 5"
+    },
+    {
+        "nome": "Stardew Valley",
+        "genero": "Simulação",
+        "plataforma": "PC"
+    }
+]

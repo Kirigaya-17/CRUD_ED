@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block titulo %}Atualizar Game{% endblock %}
+
+{% block conteudo %}
+<h1 class="titulo-secao">✏️ Atualizar Game</h1>
+
+<form class="form-game" method="POST" action="{{ url_for('atualizar_game', indice=indice) }}">
+    <label for="nome">Nome do game</label>
+    <input type="text" id="nome" name="nome" value="{{ game.nome }}" required>
+
+    <label for="genero">Gênero</label>
+    <input type="text" id="genero" name="genero" value="{{ game.genero }}" required>
+
+    <label for="plataforma">Plataforma</label>
+    <input type="text" id="plataforma" name="plataforma" value="{{ game.plataforma }}" required>
+
+    <button type="submit">Atualizar</button>
+</form>
+{% endblock %}
